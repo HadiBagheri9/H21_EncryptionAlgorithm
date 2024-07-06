@@ -10,9 +10,9 @@ namespace H21_EncryptionAlgorithm
     {
         static void Main(string[] args)
         {
-            string input = Console.ReadLine();
-            Console.WriteLine(H21.Enc(input));
-
+            
+            
+            Console.Write("\n");
             Console.ReadKey();
         }
     }

@@ -12,11 +12,25 @@ namespace H21_EncryptionAlgorithm
         {
             string str = text;
             char[] strToCharArray = str.ToCharArray();
-
+            byte[] charArrayToByteArray = CharArrayToByteArray(strToCharArray);
+            charArrayToByteArray = BitwiseOperation(charArrayToByteArray);
+            
             return str;
         }
+        private static byte[] BitwiseOperation(byte[] byteArray, byte salt = 21)
+        {
+            int len = byteArray.Length;
 
-        private byte[] CharArrayToByteArray(char[] charArray)
+            for (int i = 0; i < len; i++)
+            {
+                byteArray[i] |= (byte)~salt;
+                byteArray[i] &= (byte)~salt;
+                byteArray[i] ^= (byte)~salt;
+            }
+
+            return byteArray;
+        }
+        private static byte[] CharArrayToByteArray(char[] charArray)
         {
             int len = charArray.Length;
             byte[] byteArray = new byte[len];
@@ -26,10 +40,9 @@ namespace H21_EncryptionAlgorithm
                 byteArray[i] = (byte)charArray[i];
             }
 
-
             return byteArray;
         }
-        private char[] ByteArrayToCharArray(byte[] byteArray)
+        private static char[] ByteArrayToCharArray(byte[] byteArray)
         {
             int len = byteArray.Length;
             char[] charArray = new char[len];
@@ -38,7 +51,6 @@ namespace H21_EncryptionAlgorithm
             {
                 charArray[i] = (char)byteArray[i];
             }
-
 
             return charArray;
         }
