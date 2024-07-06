@@ -29,5 +29,18 @@ namespace H21_EncryptionAlgorithm
 
             return byteArray;
         }
+        private char[] ByteArrayToCharArray(byte[] byteArray)
+        {
+            int len = byteArray.Length;
+            char[] charArray = new char[len];
+
+            for (int i = 0; i < len; i++)
+            {
+                charArray[i] = (char)byteArray[i];
+            }
+
+
+            return charArray;
+        }
     }
 }
