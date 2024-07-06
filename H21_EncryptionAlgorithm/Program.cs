@@ -12,6 +12,8 @@ namespace H21_EncryptionAlgorithm
         {
             string input = Console.ReadLine();
             Console.WriteLine(H21.Enc(input));
+
+            Console.ReadKey();
         }
     }
 }
