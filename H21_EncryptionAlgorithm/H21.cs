@@ -8,14 +8,14 @@ namespace H21_EncryptionAlgorithm
 {
     class H21
     {
-        public static string Enc(string text)
+        public static string Enc(string text, byte salt)
         {
             string str = text;
 
             char[] strToCharArray = str.ToCharArray();
             byte[] charArrayToByteArray = CharArrayToByteArray(strToCharArray);
 
-            charArrayToByteArray = BitwiseOperation(charArrayToByteArray);
+            charArrayToByteArray = BitwiseOperation(charArrayToByteArray, salt);
             strToCharArray = ByteArrayToCharArray(charArrayToByteArray);
 
             str = new string(strToCharArray);
@@ -23,14 +23,14 @@ namespace H21_EncryptionAlgorithm
 
             return str;
         }
-        public static string Dc(string text)
+        public static string Dc(string text, byte salt)
         {
             string str = text;
 
             char[] strToCharArray = str.ToCharArray();
             byte[] charArrayToByteArray = CharArrayToByteArray(strToCharArray);
 
-            charArrayToByteArray = DeBitwiseOperation(charArrayToByteArray);
+            charArrayToByteArray = DeBitwiseOperation(charArrayToByteArray, salt);
             strToCharArray = ByteArrayToCharArray(charArrayToByteArray);
 
             str = new string(strToCharArray);
