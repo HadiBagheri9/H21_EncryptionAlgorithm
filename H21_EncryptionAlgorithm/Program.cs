@@ -10,8 +10,8 @@ namespace H21_EncryptionAlgorithm
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(H21.Enc("Hadi", 21));
-            Console.WriteLine(H21.Dc(H21.Enc("Hadi", 21), 21));
+            Console.WriteLine(HB_Algorith_Alpha.Enc("Hadi", 21));
+            Console.WriteLine(HB_Algorith_Alpha.Dc(HB_Algorith_Alpha.Enc("Hadi", 21), 21));
             Console.ReadKey();
         }
     }
