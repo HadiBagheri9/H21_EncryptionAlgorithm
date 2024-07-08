@@ -11,10 +11,31 @@ namespace H21_EncryptionAlgorithm
         public static string Enc(string text)
         {
             string str = text;
+
             char[] strToCharArray = str.ToCharArray();
             byte[] charArrayToByteArray = CharArrayToByteArray(strToCharArray);
+
             charArrayToByteArray = BitwiseOperation(charArrayToByteArray);
-            
+            strToCharArray = ByteArrayToCharArray(charArrayToByteArray);
+
+            str = new string(strToCharArray);
+            //str = new string(charArrayToByteArray);
+
+            return str;
+        }
+        public static string Dc(string text)
+        {
+            string str = text;
+
+            char[] strToCharArray = str.ToCharArray();
+            byte[] charArrayToByteArray = CharArrayToByteArray(strToCharArray);
+
+            charArrayToByteArray = DeBitwiseOperation(charArrayToByteArray);
+            strToCharArray = ByteArrayToCharArray(charArrayToByteArray);
+
+            str = new string(strToCharArray);
+            //str = new string(charArrayToByteArray);
+
             return str;
         }
         private static byte[] BitwiseOperation(byte[] byteArray, byte salt = 21)
@@ -23,9 +44,22 @@ namespace H21_EncryptionAlgorithm
 
             for (int i = 0; i < len; i++)
             {
-                byteArray[i] |= (byte)~salt;
-                byteArray[i] &= (byte)~salt;
-                byteArray[i] ^= (byte)~salt;
+                //byteArray[i] |= salt;
+                //byteArray[i] &= (byte)~salt;
+                byteArray[i] ^= salt;
+            }
+
+            return byteArray;
+        }
+        private static byte[] DeBitwiseOperation(byte[] byteArray, byte salt = 21)
+        {
+            int len = byteArray.Length;
+
+            for (int i = 0; i < len; i++)
+            {
+                //byteArray[i] |= salt;
+                //byteArray[i] &= (byte)~salt;
+                byteArray[i] ^= salt;
             }
 
             return byteArray;
